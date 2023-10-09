@@ -9,19 +9,18 @@ export const Cadastro = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
-    const [lastName, setLateName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const handleSubmit = async (e: { preventDefault: () => void; }) => {
+    const handleSubmit = async (e: { preventDefault: () => void }) => {
         e.preventDefault();
 
         try {
-            const response = await api.post("/auth/register/", { name, lastName, email, password,  });
-
-            console.log(response.data);
+            const response = await api.post("/auth/register/", { name, lastName, email, password });
+    
         } catch (error) {
             setErrorMessage("Credenciais inválidas. Tente novamente.");
-            console.error({error });
+            console.error({ errorMessage });
         }
     };
     return (
@@ -29,14 +28,25 @@ export const Cadastro = () => {
             <form className="w-full max-w-xs mr-9" onSubmit={handleSubmit}>
                 <ImgLogo />
                 <PrincipalTitleProps text="Cadastro" className="text-h1" />
+
                 <div className="div-input">
-                    <Input placeholder="Nome" className="input_style mt-6"  setValue={setName} value={name}/>
-                    <Input placeholder="Sobrenome" className="input_style mt-6"setValue={setLateName} value={lastName} />
-                    <Input placeholder="E-mail institucional" className="input_style mt-6" setValue={setEmail} value={email} />
-                    <Input placeholder="Senha" className="input_style mt-6"  setValue={setPassword} value={password} />
-              
+                    <Input placeholder="Nome" className="input_style mt-6" setValue={setName} value={name} />
+                    <Input
+                        placeholder="Sobrenome"
+                        className="input_style mt-6"
+                        setValue={setLastName}
+                        value={lastName}
+                    />
+                    <Input
+                        placeholder="E-mail institucional"
+                        className="input_style mt-6"
+                        setValue={setEmail}
+                        value={email}
+                    />
+                    <Input placeholder="Senha" className="input_style mt-6" setValue={setPassword} value={password} />
+                    <h3></h3>
                 </div>
-                <Button type="submit"/>
+                <Button type="submit" />
             </form>
         </div>
     );
