@@ -19,7 +19,7 @@ export const Login = () => {
             console.log(response.data);
         } catch (error) {
             setErrorMessage("Credenciais inválidas. Tente novamente.");
-            console.error({ error });
+            console.error(error );
         }
     };
 
@@ -31,10 +31,11 @@ export const Login = () => {
                 <div className="input-div">
                     <Input placeholder="E-mail" className="input_style mt-6" setValue={setEmail} value={email} />
                     <Input placeholder="Senha" className="input_style mt-6" setValue={setPassword} value={password} />
+                    <h3 className="h3_error text-red-500 " >{errorMessage}</h3>
                 </div>
                 <div className="text-center display-flex mt-5 text-[9D9FA1]  rounded-t-lg">
                     <h6 className="h6_style">
-                        Não tem cadastro?
+                        Não tem cadastro? 
                         <a className="a_style" href="/Cadastro">
                             Cadastre-se aqui
                         </a>

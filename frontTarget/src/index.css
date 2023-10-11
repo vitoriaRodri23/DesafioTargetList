@@ -128,13 +128,19 @@ button:focus-visible {
     border-radius: 15px;
     color: #f9f9f9;
     margin-top: 2rem;
+    border: none;
   }
   .a_style{
     color: #1F2A3D;
+    padding-left: 0.25rem;
   }
   .h6_style{
     color: #9D9FA1;
-
+  }
+  .h3_error{
+    padding-top: 0.98rem;
+    text-align: center;
+   
   }
 
 }

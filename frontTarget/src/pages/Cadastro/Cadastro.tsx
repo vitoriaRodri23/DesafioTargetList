@@ -20,7 +20,7 @@ export const Cadastro = () => {
     
         } catch (error) {
             setErrorMessage("Credenciais inválidas. Tente novamente.");
-            console.error({ errorMessage });
+            console.error( error);
         }
     };
     return (
@@ -44,7 +44,7 @@ export const Cadastro = () => {
                         value={email}
                     />
                     <Input placeholder="Senha" className="input_style mt-6" setValue={setPassword} value={password} />
-                    <h3></h3>
+                    <h3 className="h3_error text-red-500 " >{errorMessage}</h3>
                 </div>
                 <Button type="submit" />
             </form>
