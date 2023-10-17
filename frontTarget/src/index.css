@@ -111,8 +111,6 @@ button:focus-visible {
     color: #9D9FA1;
     font-size: 16px;
 }
-
-
   .img_logo{
     position: relative;
     justify-content: center;
@@ -140,7 +138,6 @@ button:focus-visible {
   .h3_error{
     padding-top: 0.98rem;
     text-align: center;
-   
   }
 
 }

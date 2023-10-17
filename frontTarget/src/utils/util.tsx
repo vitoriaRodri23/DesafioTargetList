@@ -1,24 +1,33 @@
 import { IUser } from "../context/AuthProvaider/types";
-import { api } from "../services/AxiosConfig";
+import { apiAuth } from "../services/axiosConfig.auth";
 
-export function setUserLocalStorange(user: IUser | null) {
-    localStorage.setItem("u", JSON.stringify(user));
+export function setUserLocalStorange(user: IUser | undefined) {
+    localStorage.setItem("access_token", JSON.stringify(user));
 }
 
 export function getUserLocalStorage() {
-    const json = localStorage.getItem("u");
+    const json = localStorage.getItem("access_token");
     if (!json) {
-        return null;
+        return undefined;
     }
     const user = JSON.parse(json);
-    return user ?? null;
+    return user;
 }
 
 export async function LoginRequest(email: string, password: string) {
     try {
-        const request = await api.post("login", { email, password });
+        const request = await apiAuth.post("/auth/login", { email, password });
         return request.data;
     } catch (error) {
-        return null;
+        return "fail";
+    }
+}
+
+export async function SignUpRequest(email: string, password: string, name: string) {
+    try {
+        const request = await apiAuth.post("/auth/register", { email, password, name });
+        return request.data;
+    } catch (error) {
+        return "fail";
     }
 }

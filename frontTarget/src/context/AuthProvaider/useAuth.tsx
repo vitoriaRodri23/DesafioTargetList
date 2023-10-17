@@ -1,35 +1,31 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { LoginRequest, getUserLocalStorage, setUserLocalStorange } from "../../utils/util";
+import React, { createContext, useContext, useState } from "react";
+import { LoginRequest, SignUpRequest, getUserLocalStorage, setUserLocalStorange } from "../../utils/util";
 import { IAuthProvider, IContext, IUser } from "./types";
 
 export const AuthContext = createContext<IContext>({} as IContext);
 
 export const AuthProvider = ({ children }: IAuthProvider) => {
-    const [user, setUser] = useState<IUser | null>();
-
-    useEffect(() => {
-        getUserLocalStorage();
-
-        if (user) {
-            setUser(user);
-        }
-    }, []);
+    const [user, setUser] = useState<IUser | undefined>(() => getUserLocalStorage());
 
     async function login(email: string, password: string) {
         const response = await LoginRequest(email, password);
 
-        const payload = { token: response.token, email };
+        setUser(response);
+        setUserLocalStorange(response);
+        window.location.assign("/list");
 
-        setUser(payload);
-        setUserLocalStorange(payload);
+        console.log(response);
     }
 
-    async function logout() {
-        setUser(null);
-        setUserLocalStorange(null);
+    async function cadastro(email: string, password: string, name: string) {
+        const response = await SignUpRequest(email, password, name);
+
+        setUser(response);
+        setUserLocalStorange(response);
+        window.location.assign("/login");
     }
 
-    return <AuthContext.Provider value={{ ...user, login, logout }}>{children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ user, login, cadastro }}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {

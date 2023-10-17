@@ -1,11 +1,12 @@
-import React from "react";
 import { useAuth } from "../../context/AuthProvaider/useAuth";
 
 export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
-    const auth = useAuth();
+    const { user } = useAuth();
+    console.log(user);
 
-    if (!auth.email) {
-        return <h1>You don't have access</h1>;
+    if (!user) {
+        window.location.assign("/login");
     }
+
     return children;
 };

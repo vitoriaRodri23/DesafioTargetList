@@ -4,17 +4,18 @@ interface InputProps {
     placeholder: string;
     className?: string;
     value: string;
+    type:string;
     setValue: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const CustomInput: React.FC<InputProps> = ({ placeholder, className, value, setValue }) => {
+const CustomInput: React.FC<InputProps> = ({ placeholder, className, value, type, setValue }) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(e.target.value);
     };
 
     return (
         <input
-            type="text"
+            type={type}
             value={value}
             className={`input-style ${className}`}
             placeholder={placeholder}
