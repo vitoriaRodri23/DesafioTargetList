@@ -33,7 +33,7 @@ export const SelectSubSector: React.FC<ISelectSubSectorProps> = ({ setSelectedSu
     return (
         <div>
             {loading ? (
-                <p>Carregando subsectors...</p>
+                <p className="text-center font-poppins p-2">Carregando subsectors...</p>
             ) : (
                 <div>
                     <select className="select_style" onChange={handleSubsectorChange} value={selectedSubsector}>

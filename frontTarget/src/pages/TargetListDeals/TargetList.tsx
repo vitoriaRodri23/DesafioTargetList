@@ -3,6 +3,7 @@ import { PrincipalTitleProps } from "../../components/PrincipalTitle/PrincipalTi
 import { SelectSubSector } from "../../components/SelectSubsector/SelectSubSector";
 import { TablePrincipal } from "../../components/Table/TablePrincipal";
 import { apiAuth } from "../../services/axiosConfig.auth";
+import ImgLogo from "../../components/ImgLogo/ImgLogo";
 
 export const TargetList: React.FC = () => {
     const [tableData, setTableData] = useState<any[]>([]);

@@ -26,9 +26,9 @@ export const TablePrincipal: React.FC<ITablePrincipalProps> = ({ data }) => {
     }, [subsector]);
 
     return (
-        <div className="w-11/12 h-[80vh] flex justify-center items-start mx-auto">
-            <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-                <table className="lex justify-center items-center text-sm text-center dark:text-gray-700">
+        <div className="w-12/12 flex justify-center items-start">
+            <div className="relative overflow-x-auto shadow-md sm:rounded-lg w-10/12">
+                <table className="lex justify-center items-center text-sm text-center dark:text-gray-700" >
                     <thead>
                         <TableRow />
                     </thead>
